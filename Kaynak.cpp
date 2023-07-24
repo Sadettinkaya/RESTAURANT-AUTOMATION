@@ -1,44 +1,12 @@
-/*
-**
-**                                                   SAKARYA ÜNÝVERSÝTE
-**
-**                                            BÝLGÝSAYAR VE BÝLÝÞÝM FAKÜLTESÝ
-**
-**                                             BÝLGÝSAYAR MÜHENDÝSLÝÐÝ BÖLÜMÜ
-**
-**                                            NESNEYE DAYALI PROGRAMLAMA DERSÝ
-**
-**                                               2022-2023 GÜZ DÖNEMÝ ÖDEVÝ
-**                                        
-**                                             
-**                                              ÖDEV ADI: PROJE/TASARIM
-** 
-**                                              ÖÐRENCÝ ADÝ : SADETTÝN KAYA
-**
-**                                              ÖÐRENCÝ NUMARASI:G221210006
-**
-**                                          DERSÝNÝ ALDIÐI GRUP:2.ÖÐRETÝM A GRUBU
-**
-**
-**
-**
-**
-**
-**
-**
-**
-**
-******************************************************************************************************************************************/
-
 
 #include<iostream>
-#include<fstream> //dosya iþlemleri için kütüphane ekledik
+#include<fstream> //dosya iÅŸlemleri iÃ§in kÃ¼tÃ¼phane ekledik
 #include<string>
 #include<iomanip>
 using namespace std;
 
 
-class Urun //urun classsý açtým
+class Urun //urun classsÄ± aÃ§tÄ±m
 {
 private:
 
@@ -52,7 +20,7 @@ public:
 	float kaloriGram;
 	string yemekAdi;
 
-	void depoyaKullanciKaydetsin() //depoya kullanýcý kaydediyor
+	void depoyaKullanciKaydetsin() //depoya kullanÄ±cÄ± kaydediyor
 	{
 		fstream dosya;
 		dosya.open("Depo.txt", ios::out | ios::app);
@@ -91,35 +59,35 @@ public:
 		dosya.close();
 	}
 
-	void urunGuncelle(string degistirAd) //depodaki urunu güncellliyor 
+	void urunGuncelle(string degistirAd) //depodaki urunu gÃ¼ncellliyor 
 	{
 		ifstream DosyaOku("Depo.txt"); //bilgi almak icin 
-		ofstream DosyaYaz("gecici.txt", ios::out); //gecici dosya açtýk
+		ofstream DosyaYaz("gecici.txt", ios::out); //gecici dosya aÃ§tÄ±k
 
 		while (DosyaOku >> urunAdi >> urunStokAdet >> urunFiyat >> kaloriGram) //depoyu okuyor
 		{
 
 
-			if (urunAdi == degistirAd) //girilen ad güncellenecek ada eþitse bilgileri tekrar istiyo
+			if (urunAdi == degistirAd) //girilen ad gÃ¼ncellenecek ada eÅŸitse bilgileri tekrar istiyo
 			{
 				cout << "girilecek urun bilgileri: " << endl;
 				cout << "urun adi giriniz: " << endl;
 				cin >> urunAdi;
 				cout << "urun adeti giriniz: " << endl;
 				cin >> urunStokAdet;
-				cout << "urun fiyatý giriniz: " << endl;
+				cout << "urun fiyatÄ± giriniz: " << endl;
 				cin >> urunFiyat;
 				cout << "urun kalorisi giriniz: " << endl;
 				cin >> kaloriGram;
-				DosyaYaz << urunAdi << setw(10) << urunStokAdet << setw(10) << kaloriGram << setw(10) << urunFiyat; //geciciye yazýyo
+				DosyaYaz << urunAdi << setw(10) << urunStokAdet << setw(10) << kaloriGram << setw(10) << urunFiyat; //geciciye yazÄ±yo
 			}
 
 			else
 			{
-				DosyaYaz << urunAdi << setw(10) << urunStokAdet << setw(10) << kaloriGram << setw(10) << urunFiyat; //eþit deðilse de geciciye yazýyo
+				DosyaYaz << urunAdi << setw(10) << urunStokAdet << setw(10) << kaloriGram << setw(10) << urunFiyat; //eÅŸit deÄŸilse de geciciye yazÄ±yo
 			}
 		}
-		DosyaYaz.close(); //dosyalarý kapattýk
+		DosyaYaz.close(); //dosyalarÄ± kapattÄ±k
 		DosyaOku.close();
 
 		remove("Depo.txt");
@@ -134,25 +102,25 @@ public:
 		while (DosyaOku >> urunAdi >> urunStokAdet >> urunFiyat >> kaloriGram) //depoyu okuyo
 		{
 
-			if (urunAdi == silurun) //silincek ad girilen ada eþitse siliyor
+			if (urunAdi == silurun) //silincek ad girilen ada eÅŸitse siliyor
 			{
 				cout << "silinecek urun bilgileri: " << endl;
 				cout << "urun adi: " << urunAdi << endl;
 				cout << "urun adeti: " << urunStokAdet << endl;
-				cout << "urun fiyatý: " << urunFiyat << endl;
+				cout << "urun fiyatÄ±: " << urunFiyat << endl;
 				cout << "urun kalorisi: " << kaloriGram << endl;
 			}
 
 			else
 			{
-				DosyaYaz << endl << urunAdi << endl << urunStokAdet << endl << kaloriGram << endl << urunFiyat << endl; //deðilse geciciye atýyo
+				DosyaYaz << endl << urunAdi << endl << urunStokAdet << endl << kaloriGram << endl << urunFiyat << endl; //deÄŸilse geciciye atÄ±yo
 			}
 		}
 		DosyaYaz.close();
 		DosyaOku.close();
 
 		remove("Depo.txt"); //depoyu siliyo
-		rename("gecici.txt", "Depo.txt"); //deðiþtiriyo isimleri
+		rename("gecici.txt", "Depo.txt"); //deÄŸiÅŸtiriyo isimleri
 	}
 
 	void malzemeyeKaydet(string yemekadi, string urunadi, float stokadet)//malzemeye ben kaydediyorum
@@ -165,7 +133,7 @@ public:
 		if (malzemefile.is_open())
 		{
 
-			malzemefile << setw(20) << yemekAdi << setw(20) << urunAdi << setw(20) << urunStokAdet<<endl; //malzeme dosyasýna atýyo
+			malzemefile << setw(20) << yemekAdi << setw(20) << urunAdi << setw(20) << urunStokAdet<<endl; //malzeme dosyasÄ±na atÄ±yo
 
 		}
 		malzemefile.close();
@@ -173,7 +141,7 @@ public:
 
 	}
 
-	void malzemeyeKullaniciKaydetsin() //malzemeye kulllanýcý kaydediyor yemek adýyla beraber kaydediyor yemek txt sine baðlamak için
+	void malzemeyeKullaniciKaydetsin() //malzemeye kulllanÄ±cÄ± kaydediyor yemek adÄ±yla beraber kaydediyor yemek txt sine baÄŸlamak iÃ§in
 	{
 
 		fstream malzemefile;
@@ -231,17 +199,17 @@ public:
 	}
 };
 
-class Yemek : public Urun //kalýtým yaptým diðer sýnýfýn public üyelerinni kullanmak için
+class Yemek : public Urun //kalÄ±tÄ±m yaptÄ±m diÄŸer sÄ±nÄ±fÄ±n public Ã¼yelerinni kullanmak iÃ§in
 {
 public:
 
-	void yemekGuncelle(string güncelleYemek)//yemek güncelleme fonksiyonu
+	void yemekGuncelle(string gÃ¼ncelleYemek)//yemek gÃ¼ncelleme fonksiyonu
 	{
 		ifstream DosyaOku("yemek.txt"); //bilgi almak icin 
-		ofstream DosyaYaz("gecici.txt", ios::out); //gecici dosya açtýk
-		while (DosyaOku >> yemekAdi >> urunFiyat) //yemek dosyasýný okuyor
+		ofstream DosyaYaz("gecici.txt", ios::out); //gecici dosya aÃ§tÄ±k
+		while (DosyaOku >> yemekAdi >> urunFiyat) //yemek dosyasÄ±nÄ± okuyor
 		{
-			if (yemekAdi == güncelleYemek)
+			if (yemekAdi == gÃ¼ncelleYemek)
 			{
 				cout << "girilecek yemek bilgileri" << endl;
 				cout << "yemek adi...:" << endl;
@@ -262,7 +230,7 @@ public:
 
 		while (dosyaokuu >> yemekAdi >> urunAdi >> urunStokAdet)
 		{
-			if (yemekAdi == güncelleYemek)
+			if (yemekAdi == gÃ¼ncelleYemek)
 			{
 				cout << "girdiginiz yemek adini tekrar giriniz" << endl;
 				cin >> yemekAdi;
@@ -302,32 +270,32 @@ public:
 
 
 		remove("malzeme.txt");
-		rename("temp.txt", "malzeme.txt");//isimleri deðiþtirdik
+		rename("temp.txt", "malzeme.txt");//isimleri deÄŸiÅŸtirdik
 	}
 
-	void yemekSil()//yemek siliyor ayný zamanda malzeme dosyasýndan o yemekle ilgili urunleri de siliyor
+	void yemekSil()//yemek siliyor aynÄ± zamanda malzeme dosyasÄ±ndan o yemekle ilgili urunleri de siliyor
 	{
 		string yemekAdiAra;
 		cout << "silmek istediginiz yemegi giriniz" << endl;
 		cin >> yemekAdiAra;
-		ifstream dosyaoku("yemek.txt");//bilgi almak için.
-		ofstream dosyayaz("gecici.txt", ios::out);//gecici txt açtýk
+		ifstream dosyaoku("yemek.txt");//bilgi almak iÃ§in.
+		ofstream dosyayaz("gecici.txt", ios::out);//gecici txt aÃ§tÄ±k
 
-		while (dosyaoku >> yemekAdi >> yemekFiyati)//dosyayý okuyor döngüde
+		while (dosyaoku >> yemekAdi >> yemekFiyati)//dosyayÄ± okuyor dÃ¶ngÃ¼de
 		{
-			if (yemekAdiAra == yemekAdi)//girilen yemek adý yemek adýna eþiitse siliyor
+			if (yemekAdiAra == yemekAdi)//girilen yemek adÄ± yemek adÄ±na eÅŸiitse siliyor
 			{
 				cout << "silindi";
 			}
 
 			else
 			{
-				dosyayaz << endl << yemekAdi << setw(20) << yemekFiyati << endl;//eþit deðilse gecici txt ye yazýyor 
+				dosyayaz << endl << yemekAdi << setw(20) << yemekFiyati << endl;//eÅŸit deÄŸilse gecici txt ye yazÄ±yor 
 			}
 		}
 
-		ifstream dosyaokuu("malzeme.txt"); //malzemeye baðlamak için malzeme txt yi de açtýk
-		ofstream dosyayayazzz("temp.txt"); //gecici txt açtýk
+		ifstream dosyaokuu("malzeme.txt"); //malzemeye baÄŸlamak iÃ§in malzeme txt yi de aÃ§tÄ±k
+		ofstream dosyayayazzz("temp.txt"); //gecici txt aÃ§tÄ±k
 
 		while (dosyaokuu >> yemekAdi >> urunAdi >> urunStokAdet)//malzeme dosyasini okuyor
 		{
@@ -348,7 +316,7 @@ public:
 		rename("temp.txt", "malzeme.txt");
 	}
 
-	void yemekKaydet(string yemekname, float yemkparasi) //kendim girmek için yemek kaydet fonku yazdým
+	void yemekKaydet(string yemekname, float yemkparasi) //kendim girmek iÃ§in yemek kaydet fonku yazdÄ±m
 	{
 		yemekFiyati = yemkparasi;
 		yemekAdi = yemekname;
@@ -365,16 +333,16 @@ public:
 	{
 		fstream ydosyasi;
 
-		ydosyasi.open("yemek.txt", ios::out | ios::app);//dosyayi açtýk yemek txt adýnda
+		ydosyasi.open("yemek.txt", ios::out | ios::app);//dosyayi aÃ§tÄ±k yemek txt adÄ±nda
 
-		if (ydosyasi.is_open())//eðer dosya açýksa alttaki iþlemleri yap diyor
+		if (ydosyasi.is_open())//eÄŸer dosya aÃ§Ä±ksa alttaki iÅŸlemleri yap diyor
 		{
 			cout << "yemek adi giriniz...:" << endl;
 			cin >> yemekAdi; ydosyasi <<setw(20)<< yemekAdi;
 			cout << "yemek fiyati giriniz...:" << endl;
 			cin >> yemekFiyati; ydosyasi << setw(20)<<yemekFiyati;
 		}
-		ydosyasi.close();//dosyayi kapattýk
+		ydosyasi.close();//dosyayi kapattÄ±k
 	}
 
 private:
@@ -393,11 +361,11 @@ int main()
 	fstream ydosyasi("yemek.txt", ios::out);//dosyayi temizliyo
 	ydosyasi.close();
 
-	yemegimiz.yemekKaydet("karniyarik", 5);//yemek txt sinde bir þeyler olmasý lazým silmek güncellemek için o yuzden bu iþlemin yapýlabildiiðini göstercek kadar
-	yemegimiz.yemekKaydet("dolma", 44);     //az þeyler ekledim 
+	yemegimiz.yemekKaydet("karniyarik", 5);//yemek txt sinde bir ÅŸeyler olmasÄ± lazÄ±m silmek gÃ¼ncellemek iÃ§in o yuzden bu iÅŸlemin yapÄ±labildiiÄŸini gÃ¶stercek kadar
+	yemegimiz.yemekKaydet("dolma", 44);     //az ÅŸeyler ekledim 
 	yemegimiz.yemekKaydet("menemen", 55);
 
-	do //menü
+	do //menÃ¼
 	{
 		cout << "*********menu********" << endl << endl;
 		cout << "depoya urun kaydetmek icin 1 e basiniz" << endl;
@@ -411,8 +379,8 @@ int main()
 
 
 
-		Urun urunumuz;//urun classýndan urunumuz diye nesne oluþturdum
-		fstream dosya("Depo.txt", ios::out);//dosyayi temizliyo böyle
+		Urun urunumuz;//urun classÄ±ndan urunumuz diye nesne oluÅŸturdum
+		fstream dosya("Depo.txt", ios::out);//dosyayi temizliyo bÃ¶yle
 		dosya.close();
 		fstream malzemefile("malzeme.txt", ios::out);
 		malzemefile.close();
@@ -420,23 +388,23 @@ int main()
 		cin >> secenek;
 		string adgir;
 		urunumuz.depoyaKaydet("fasulye", 20, 20, 5);
-		urunumuz.depoyaKaydet("pýrasa", 20, 20, 5);  //depo boþ durmasýn diye kendim kaydettim urun 
-		urunumuz.depoyaKaydet("sogan", 20, 20, 5);   // cunku kullanýcý direkt silme iþlemine basmak isteyebilirdi boþ durmamasý lazým deponun
-		urunumuz.malzemeyeKaydet("patlicanyemegi", "patlican", 5);  //depoya kaydetme sebebimle ayný sebepten ötürü buna da kaydettim kendim biraz
+		urunumuz.depoyaKaydet("pÄ±rasa", 20, 20, 5);  //depo boÅŸ durmasÄ±n diye kendim kaydettim urun 
+		urunumuz.depoyaKaydet("sogan", 20, 20, 5);   // cunku kullanÄ±cÄ± direkt silme iÅŸlemine basmak isteyebilirdi boÅŸ durmamasÄ± lazÄ±m deponun
+		urunumuz.malzemeyeKaydet("patlicanyemegi", "patlican", 5);  //depoya kaydetme sebebimle aynÄ± sebepten Ã¶tÃ¼rÃ¼ buna da kaydettim kendim biraz
 		urunumuz.malzemeyeKaydet("pirasayemegi", "pirasa", 5);
 		urunumuz.malzemeyeKaydet("karniyarik", "kiyma", 8);
 		switch (secenek)
 		{
 		case 1:
 
-			urunumuz.depoyaKullanciKaydetsin();//depoya kullanýcý kaydediyor
+			urunumuz.depoyaKullanciKaydetsin();//depoya kullanÄ±cÄ± kaydediyor
 			break;
 
 		case 2:
 
 			cout << "guncellenecek urunun adini gir" << endl;
 			cin >> adgir;
-			urunumuz.urunGuncelle(adgir);//depodaki urunu güncelliyor
+			urunumuz.urunGuncelle(adgir);//depodaki urunu gÃ¼ncelliyor
 			break;
 
 		case 3:
@@ -447,14 +415,14 @@ int main()
 			break;
 
 		case 4:
-			urunumuz.malzemeyeKullaniciKaydetsin(); //malzeme txtsine malzeme kaydediyor kullanýcý
+			urunumuz.malzemeyeKullaniciKaydetsin(); //malzeme txtsine malzeme kaydediyor kullanÄ±cÄ±
 			break;
 
 		case 5:
 			urunumuz.malzemeSil(); //malzeme siliyor
 			break;
 		case 6:
-			yemegimiz.yemekKullaniciEklesin(); //yemek ekliyo kullanýcý
+			yemegimiz.yemekKullaniciEklesin(); //yemek ekliyo kullanÄ±cÄ±
 			break;
 		case 7:
 			yemegimiz.yemekSil(); //yemek siliyo
@@ -462,7 +430,7 @@ int main()
 		case 8:
 			cout << "guncellemek istediginiz yemek adini giriniz" << endl;
 			cin >> adgir;
-			yemegimiz.yemekGuncelle(adgir); //yemek güncelliyo
+			yemegimiz.yemekGuncelle(adgir); //yemek gÃ¼ncelliyo
 			break;
 
 		default:
@@ -471,7 +439,7 @@ int main()
 		}
 
 		cout << endl;
-		cout << "islemi tekrar yapmak ister misiniz (e/h)" << endl;  //dongü icin kullanýcýya evet hayir sorusunu sordum
+		cout << "islemi tekrar yapmak ister misiniz (e/h)" << endl;  //dongÃ¼ icin kullanÄ±cÄ±ya evet hayir sorusunu sordum
 		cin >> eh;
 
 	}
